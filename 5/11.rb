@@ -1,27 +1,11 @@
-class Menu
-  attr_accessor :name
-  attr_accessor :price
-  
-  # initializeメソッドを定義してください
-  def initialize
-    self.name = "ピザ"
-    self.price = 800
-  end
-  
-  def info
-    return "#{self.name} #{self.price}円"
-  end
-  
-  def get_total_price(count)
-    total_price = self.price * count
-    if count >= 3
-      total_price -= 100
-    end
-    return total_price
-  end
-end
+# requireを用いて、Dateクラスを読み込んでください
+require "date"
 
-menu1 = Menu.new
+# 変数birthdayに、Dateクラスのインスタンスを代入してください
+birthday = Date.new(1998,8,5)
 
-# menu1に対してinfoメソッドを呼び出して戻り値を出力してください
-puts menu1.info
+# 変数birthdayをputsしてください
+puts birthday
+
+# 変数birthdayにsunday?メソッドを用いた結果をputsしてください
+puts birthday.sunday?
