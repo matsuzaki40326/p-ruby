@@ -1,23 +1,29 @@
-class Menu
-  attr_accessor :name
-  attr_accessor :price
-  
-  def info
-    return "#{self.name} #{self.price}円"
-  end
-  
-  # get_total_priceメソッドを定義してください
-  def get_total_price(count)
-    total_price = self.price * count
-    if count >= 3
-      return total_price - 100
-    end
-  end
+require "./food"
+require "./drink"
+
+food1 = Food.new(name: "ピザ", price: 800, calorie: 700)
+food2 = Food.new(name: "すし", price: 1000, calorie: 600)
+
+# Drink.newの引数を書き換えてください
+drink1 = Drink.new(name: "コーラ", price: 300, amount: 500)
+drink2 = Drink.new(name: "お茶", price: 200, amount: 400)
+
+menus = [food1, food2, drink1, drink2]
+
+index = 0
+menus.each do |menu|
+  puts "#{index}. #{menu.info}"
+  index += 1
 end
 
-menu1 = Menu.new
-menu1.name = "ピザ"
-menu1.price = 800
+puts "--------------"
+puts "メニューの番号を選択してください"
+order = gets.chomp.to_i
 
-# menu1に対してget_total_priceメソッドを呼び出してください
-puts menu1.get_total_price(3)
+selected_menu = menus[order]
+puts "選択されたメニュー: #{selected_menu.name}"
+
+puts "個数を入力してください(3つ以上で100円割引)"
+count = gets.chomp.to_i
+
+puts "お会計は#{selected_menu.get_total_price(count)}円です"
