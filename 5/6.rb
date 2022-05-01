@@ -1,27 +1,30 @@
-class Menu
-  attr_accessor :name
-  attr_accessor :price
+# food.rbとdrink.rbを読み込むように書き換えてください
+require "./food"
+require "./drink"
+
+# food1とfood2をFoodクラスのインスタンスに書き換えてください
+food1 = Food.new(name: "ピザ", price: 800)
+food2 = Food.new(name: "すし", price: 1000)
+# drink1とdrink2をDrinkクラスのインスタンスに書き換えてください
+drink1 = Drink.new(name: "コーラ", price: 300)
+drink2 = Drink.new(name: "お茶", price: 200)
+
+menus = [food1, food2, drink1, drink2]
+
+index = 0
+menus.each do |menu|
+  puts "#{index}. #{menu.info}"
+  index += 1
 end
 
-menu1 = Menu.new
+puts "--------------"
+puts "メニューの番号を選択してください"
+order = gets.chomp.to_i
 
-menu1.name = "ピザ"
-puts menu1.name
+selected_menu = menus[order]
+puts "選択されたメニュー: #{selected_menu.name}"
 
-menu1.price = 800
-puts menu1.price
+puts "個数を入力してください(3つ以上で100円割引)"
+count = gets.chomp.to_i
 
-# Menuクラスのインスタンスを生成して変数menu2に代入してください
-menu2 = Menu.new
-
-# menu2のnameに「すし」を代入してください
-menu2.name = "すし"
-
-# menu2のnameを出力してください
-puts menu2.name
-
-# menu2のpriceに「1000」を代入してください
-menu2.price = 1000
-
-# menu2のpriceを出力してください
-puts menu2.price
+puts "お会計は#{selected_menu.get_total_price(count)}円です"
