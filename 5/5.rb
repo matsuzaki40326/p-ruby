@@ -1,15 +1,8 @@
-class Menu
-  attr_accessor :name
-  attr_accessor :price
-end
+require "./food"
+require "./drink"
 
-menu1 = Menu.new
+food1 = Food.new(name: "ピザ", price: 800)
+food1.calorie = 700
 
-menu1.name = "ピザ"
-puts menu1.name
-
-# menu1のpriceに「800」を代入してください
-menu1.price = 800
-
-# menu1のpriceを出力してください
-puts menu1.price
+# food1に対してcalorie_infoメソッドを呼び出して戻り値を出力してください
+puts food1.calorie_info
