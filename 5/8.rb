@@ -1,16 +1,31 @@
-class Menu
-  attr_accessor :name
-  attr_accessor :price
-  
-  def info
-    # 文字列「料理名と値段が表示されます」をreturnしてください
-    return "料理名と値段が表示されます"
-  end
+require "./food"
+require "./drink"
+
+# Food.newの引数を書き換えてください
+food1 = Food.new(name: "ピザ", price: 800, calorie: 700)
+food2 = Food.new(name: "すし", price: 1000, calorie: 600)
+
+drink1 = Drink.new(name: "コーラ", price: 300)
+drink1.amount = 500
+drink2 = Drink.new(name: "お茶", price: 200)
+drink2.amount = 400
+
+menus = [food1, food2, drink1, drink2]
+
+index = 0
+menus.each do |menu|
+  puts "#{index}. #{menu.info}"
+  index += 1
 end
 
-menu1 = Menu.new
-menu1.name = "ピザ"
-menu1.price = 800
+puts "--------------"
+puts "メニューの番号を選択してください"
+order = gets.chomp.to_i
 
-# menu1に対してinfoメソッドを呼び出して戻り値を出力してください
-puts menu1.info
+selected_menu = menus[order]
+puts "選択されたメニュー: #{selected_menu.name}"
+
+puts "個数を入力してください(3つ以上で100円割引)"
+count = gets.chomp.to_i
+
+puts "お会計は#{selected_menu.get_total_price(count)}円です"
